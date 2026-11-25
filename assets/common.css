@@ -40,3 +40,15 @@ h1 .en { font-size: 17px; font-weight: 600; margin-top: 2px; }
 .pattern i { width: 22px; height: 22px; background: #c9ddd0; border-radius: 4px; }
 .pattern i:nth-child(3n) { background: var(--yellow); }
 .pattern i:nth-child(4n) { background: var(--green); }
+
+/* 寬螢幕：選單直接攤開成一排放在頁首，不用點開。
+   窄螢幕（手機、平板直放）還是收成右上角的「選單」按鈕。
+   之後選單項目變多、一排放不下時，把 1000px 調大即可。 */
+@media (min-width: 1000px) {
+  .menubtn { display: none; }
+  .menu, .menu[hidden] { display: flex; position: static; min-width: 0; background: none; border: 0; box-shadow: none; padding: 0; gap: 2px; }
+  .menu a, .menu .disabled { padding: 7px 11px; text-align: center; white-space: nowrap; border-radius: 9px; }
+  .menu b { font-size: 14px; }
+  .menu small { font-size: 11px; }
+  .menu a.active { box-shadow: inset 0 -3px 0 var(--green); border-radius: 9px 9px 0 0; }
+}
