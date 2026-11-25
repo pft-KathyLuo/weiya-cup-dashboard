@@ -30,6 +30,11 @@
     <h1>三分鐘俄羅斯方塊練習<span class="en">3-Minute Tetris Practice</span></h1>
     <p class="lead">以接近 Switch 的左右手配置熟悉操作。<span class="en">Get used to a Switch-style two-hand layout.</span></p>
 
+    <div class="pconly" role="note">
+      <span class="icon" aria-hidden="true">💻</span>
+      <div><b>請用電腦開啟</b>：需要實體鍵盤操作，手機和平板無法遊玩。<span class="en">Please use a computer. A physical keyboard is required; phones and tablets can't play.</span></div>
+    </div>
+
     <div class="layout">
       <section class="gamecard">
         <div class="gamegrid">
@@ -46,6 +51,11 @@
                 <strong id="overlayTitle">Ready?</strong>
                 <p id="overlayText">按下開始後進行三分鐘練習<br>Press Start for a 3-minute run</p>
                 <button id="start" class="btn">Start</button>
+              </div>
+              <div class="mobileblock">
+                <span class="icon" aria-hidden="true">💻</span>
+                <strong>請用電腦開啟</strong>
+                <p>手機和平板沒有鍵盤，無法遊玩<br>Please open this page on a computer</p>
               </div>
             </div>
           </div>
@@ -96,6 +106,10 @@
       </aside>
     </div>
   </main>
+  <script>
+    // 沒有滑鼠或觸控板的裝置（手機、平板）視為不能玩：蓋住盤面、隱藏開始按鈕
+    try { if (!matchMedia('(any-pointer: fine)').matches) document.body.classList.add('touch-only'); } catch (e) {}
+  </script>
   <script src="assets/play.js"></script>
 </body>
 </html>
