@@ -20,7 +20,9 @@
   function render() {
     var q = $('search').value.trim().toLowerCase();
     var teams = data.teams.filter(function (t) {
-      return [t.p1.name, t.p2.name].join(' ').toLowerCase().includes(q);
+      return [t.p1, t.p2].map(function (p) {
+        return [p.name, p.company, p.dept].join(' ');
+      }).join(' ').toLowerCase().includes(q);
     });
 
     $('rows').replaceChildren();
@@ -34,8 +36,18 @@
       tr.append(n);
       [t.p1, t.p2].forEach(function (p) {
         var td = document.createElement('td');
-        td.className = 'person';
-        td.textContent = p.name;
+        var name = document.createElement('div');
+        name.className = 'person';
+        name.textContent = p.name;
+        td.append(name);
+        // 公司 · 部門（舊版 API 沒有這兩個欄位時就不顯示）
+        var org = [p.company, p.dept].filter(Boolean).join(' · ');
+        if (org) {
+          var sub = document.createElement('div');
+          sub.className = 'org';
+          sub.textContent = org;
+          td.append(sub);
+        }
         tr.append(td);
       });
       $('rows').append(tr);
