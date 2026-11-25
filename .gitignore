@@ -1,1 +1,5 @@
 .claude/
+
+# Apps Script 原始碼與壓測腳本只留在本機（Config.gs 有公司 email，不放進公開 repo）
+weiya-site/
+loadtest/
