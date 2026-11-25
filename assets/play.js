@@ -61,8 +61,12 @@ var DAS=150,ARR=35,SOFT=30; // 按住多久開始連續移動、連續移動間�
 var keysDown={},dir=0,dasClock=0,arrClock=0,softClock=0;
 function releaseAll(){keysDown={};dir=0;dasClock=0;arrClock=0;softClock=0}
 function handleHeld(dt){if(dir){dasClock+=dt;if(dasClock>=DAS){arrClock+=dt;while(arrClock>=ARR){arrClock-=ARR;move(dir)}}}if(keysDown.s){softClock+=dt;while(softClock>=SOFT){softClock-=SOFT;down(true)}}}
-function keyUp(e){var k=e.key.toLowerCase();if(!keysDown[k])return;delete keysDown[k];if(k==='a'||k==='d'){dir=keysDown.d?1:keysDown.a?-1:0;dasClock=0;arrClock=0}if(k==='s')softClock=0}
-function key(e){var k=e.key.toLowerCase();if(['a','d','s','w','l','p',' ','escape'].indexOf(k)<0)return;e.preventDefault();if(k==='escape'){releaseAll();togglePause();return}if(!running||paused)return;if((k==='a'||k==='d'||k==='s')&&e.repeat)return;if(k==='a'||k==='d'){keysDown[k]=true;dir=k==='a'?-1:1;dasClock=0;arrClock=0;move(dir)}else if(k==='s'){keysDown.s=true;softClock=0;down(true)}else if(k==='w'&&!e.repeat){if(hardDropOn)hardDrop()}else if(k==='l'&&!e.repeat)rotate(-1);else if(k==='p'&&!e.repeat)rotate(1);else if(k===' '&&!e.repeat)holdPiece();draw()}
+// 用 e.code（實體按鍵位置）判斷，不用 e.key（打出來的字）：
+// Mac 開著注音輸入法時，按 A 會得到「ㄇ」而不是「a」，用 e.key 會完全沒反應。
+var KEY_CODES={KeyA:'a',KeyD:'d',KeyS:'s',KeyW:'w',KeyL:'l',KeyP:'p',Space:' ',Escape:'escape'};
+function keyName(e){return KEY_CODES[e.code]||String(e.key||'').toLowerCase()}
+function keyUp(e){var k=keyName(e);if(!keysDown[k])return;delete keysDown[k];if(k==='a'||k==='d'){dir=keysDown.d?1:keysDown.a?-1:0;dasClock=0;arrClock=0}if(k==='s')softClock=0}
+function key(e){var k=keyName(e);if(['a','d','s','w','l','p',' ','escape'].indexOf(k)<0)return;e.preventDefault();if(k==='escape'){releaseAll();togglePause();return}if(!running||paused)return;if((k==='a'||k==='d'||k==='s')&&e.repeat)return;if(k==='a'||k==='d'){keysDown[k]=true;dir=k==='a'?-1:1;dasClock=0;arrClock=0;move(dir)}else if(k==='s'){keysDown.s=true;softClock=0;down(true)}else if(k==='w'&&!e.repeat){if(hardDropOn)hardDrop()}else if(k==='l'&&!e.repeat)rotate(-1);else if(k==='p'&&!e.repeat)rotate(1);else if(k===' '&&!e.repeat)holdPiece();draw()}
 
 document.addEventListener('keydown',key);
 document.addEventListener('keyup',keyUp);
