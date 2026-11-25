@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>尾牙競賽｜問答</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/common.css">
+  <link rel="stylesheet" href="assets/qa.css">
+</head>
+<body>
+  <header>
+    <div class="brand"><div class="logo"><i></i><i></i><i></i><i></i></div><span>尾牙遊戲競賽<small>Year-End Game Cup</small></span></div>
+    <div class="menuwrap">
+      <button id="menuBtn" class="menubtn" aria-expanded="false" aria-controls="menuList">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>選單 Menu
+      </button>
+      <nav id="menuList" class="menu" hidden>
+        <a href="./"><b>已報名名單</b><small>Registration</small></a>
+        <a href="schedule.html"><b>賽程表</b><small>Schedule</small></a>
+        <span class="disabled" aria-disabled="true"><b>海選成績</b><small>Qualifier Scores · 尚未開放 Coming soon</small></span>
+        <a href="play.html"><b>三分鐘試玩</b><small>3-Min Practice</small></a>
+        <a class="active" href="qa.html"><b>問答</b><small>Q&amp;A</small></a>
+      </nav>
+    </div>
+  </header>
+  <script src="assets/menu.js"></script>
+
+  <main>
+    <h1>問答<span class="en">Q&amp;A</span></h1>
+    <p class="lead">有問題就匿名問，工作人員會在這裡回覆。<span class="en">Ask anonymously. Staff will answer here.</span></p>
+
+    <form id="askForm" class="ask" autocomplete="off">
+      <label for="question" class="asklabel">你的問題 <small>Your question</small></label>
+      <textarea id="question" name="question" maxlength="300" rows="3" required
+        placeholder="例如：海選可以練習幾次？ e.g. How many tries do we get in the qualifiers?"></textarea>
+      <!-- 防機器人：真人看不到這個欄位，機器人會填 -->
+      <div class="trap" aria-hidden="true"><label>Website <input name="website" tabindex="-1" autocomplete="off"></label></div>
+      <div class="askfoot">
+        <span class="anon">🔒 匿名提問，不會記錄你是誰<span class="en">Anonymous. We don't record who asked.</span></span>
+        <span class="counter"><span id="count">0</span>/300</span>
+        <button id="send" class="btn" type="submit">送出 Send</button>
+      </div>
+      <div id="askStatus" class="askstatus" role="status"></div>
+    </form>
+
+    <div id="message" class="message" role="status"></div>
+
+    <section class="listhead">
+      <h2>所有問題 <small class="muted">Questions</small></h2>
+      <div class="tabs" role="tablist" aria-label="篩選 Filter">
+        <button class="tab active" data-filter="all" role="tab" aria-selected="true">全部 All <b id="nAll">0</b></button>
+        <button class="tab" data-filter="answered" role="tab" aria-selected="false">已回覆 Answered <b id="nAnswered">0</b></button>
+        <button class="tab" data-filter="pending" role="tab" aria-selected="false">待回覆 Pending <b id="nPending">0</b></button>
+      </div>
+    </section>
+
+    <ol id="list" class="qalist">
+      <li class="empty">正在讀取問答… Loading…</li>
+    </ol>
+
+    <div class="foot">
+      <span id="sync">等待連線 Connecting…</span>
+      <button id="refresh" class="refresh" type="button">立即更新 Refresh</button>
+    </div>
+  </main>
+
+  <script src="assets/config.js"></script>
+  <script src="assets/qa.js"></script>
+</body>
+</html>
