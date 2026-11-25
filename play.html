@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>尾牙競賽｜三分鐘試玩</title>
+  <link rel="icon" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/common.css">
+  <link rel="stylesheet" href="assets/play.css">
+</head>
+<body>
+  <header>
+  <div class="brand"><div class="logo"><i></i><i></i><i></i><i></i></div><span>尾牙遊戲競賽<small>Year-End Game Cup</small></span></div>
+  <div class="menuwrap">
+    <button id="menuBtn" class="menubtn" aria-expanded="false" aria-controls="menuList">
+      <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>選單 Menu
+    </button>
+    <nav id="menuList" class="menu" hidden>
+      <a href="./"><b>已報名名單</b><small>Registration</small></a>
+      <a href="schedule.html"><b>賽程表</b><small>Schedule</small></a>
+      <span class="disabled" aria-disabled="true"><b>海選成績</b><small>Qualifier Scores · 尚未開放 Coming soon</small></span>
+      <a class="active" href="play.html"><b>三分鐘試玩</b><small>3-Min Practice</small></a>
+    </nav>
+  </div>
+</header>
+  <script src="assets/menu.js"></script>
+  <main>
+    <div class="eyebrow">TETRIS · 3 MIN PRACTICE</div>
+    <h1>三分鐘俄羅斯方塊練習<span class="en">3-Minute Tetris Practice</span></h1>
+    <p class="lead">以接近 Switch 的左右手配置熟悉操作。<span class="en">Get used to a Switch-style two-hand layout.</span></p>
+
+    <div class="layout">
+      <section class="gamecard">
+        <div class="gamegrid">
+          <aside class="hud holdhud">
+            <div class="preview"><span>HOLD</span><canvas id="hold" width="100" height="80"></canvas></div>
+            <div class="stat"><span>LEVEL</span><strong id="level">1</strong></div>
+            <div class="stat"><span>LINES</span><strong id="lines">0</strong></div>
+            <div class="stat"><span>COMBO</span><strong id="combo">0</strong></div>
+          </aside>
+          <div class="stage">
+            <canvas id="board" width="300" height="600" aria-label="俄羅斯方塊遊戲區 Tetris board"></canvas>
+            <div id="overlay" class="overlay">
+              <div>
+                <strong id="overlayTitle">Ready?</strong>
+                <p id="overlayText">按下開始後進行三分鐘練習<br>Press Start for a 3-minute run</p>
+                <button id="start" class="btn">Start</button>
+              </div>
+            </div>
+          </div>
+          <aside class="hud mainhud">
+            <div class="preview"><span>NEXT</span><canvas id="next" width="100" height="210"></canvas></div>
+            <div class="stat"><span>TIME</span><strong id="time">03:00</strong></div>
+            <div class="stat"><span>SCORE</span><strong id="score">0</strong></div>
+          </aside>
+        </div>
+        <div class="actions">
+          <button id="restart" class="btn secondary">Restart</button>
+          <button id="pause" class="btn secondary" disabled>Pause</button>
+        </div>
+        <label class="setting">
+          <span>快速落下（W）<small>Hard drop</small></span>
+          <input id="hardDrop" type="checkbox" role="switch" checked>
+          <span class="switch" aria-hidden="true"></span>
+          <b id="hardDropState">ON</b>
+        </label>
+        <div id="status" class="status">尚未開始 · 成績不會上傳或保存<br>Not started · Scores are not saved</div>
+      </section>
+
+      <aside class="sidecard">
+        <h2>鍵盤操作 <small class="muted">Controls</small></h2>
+        <div class="keys">
+          <div class="keyrow"><span class="key">A</span><span>向左移動<small>Move left</small></span></div>
+          <div class="keyrow"><span class="key">D</span><span>向右移動<small>Move right</small></span></div>
+          <div class="keyrow"><span class="key">S</span><span>加速下降<small>Soft drop</small></span></div>
+          <div class="keyrow" id="hardDropKey"><span class="key">W</span><span>直接落下<small>Hard drop</small></span></div>
+          <div class="keyrow"><span class="key">L</span><span>向左旋轉 ↺<small>Rotate left</small></span></div>
+          <div class="keyrow"><span class="key">P</span><span>向右旋轉 ↻<small>Rotate right</small></span></div>
+          <div class="keyrow"><span class="key">Space</span><span>暫存方塊<small>Hold</small></span></div>
+          <div class="keyrow"><span class="key">Esc</span><span>暫停／繼續<small>Pause / Resume</small></span></div>
+        </div>
+        <div class="rules">
+          <h2>練習版計分 <small class="muted">Scoring</small></h2>
+          <div class="scoreline"><span>消除 1／2／3／4 行<small>Single / Double / Triple / Tetris</small></span><b>100／300／500／800</b></div>
+          <div class="scoreline"><span>T-Spin 0／1／2／3 行</span><b>400／800／1,200／1,600</b></div>
+          <div class="scoreline"><span>Mini T-Spin</span><b>基本消行分＋100<small>Base + 100</small></b></div>
+          <div class="scoreline"><span>Back-to-Back</span><b>困難消行 × 1.5<small>Hard clears × 1.5</small></b></div>
+          <div class="scoreline"><span>Combo</span><b>第 2 次起每次＋50<small>+50 per combo step</small></b></div>
+          <div class="scoreline"><span>Perfect Clear 全消</span><b>額外＋800～3,200<small>+800 to 3,200</small></b></div>
+          <div class="scoreline"><span>加速／直接落下<small>Soft / Hard drop</small></span><b>每格＋1／＋2<small>+1 / +2 per row</small></b></div>
+          <p>每消除 10 行升一級；除落下分外，上述分數與獎勵都乘上目前等級。Combo 從第二次連續消行起加 50 分，之後每次再增加 50 分（最高每次 1,000 分）。全消依一次消除的行數加 800／1,000／1,800／2,000 分；Back-to-Back Tetris 全消加 3,200 分。<span class="en">Level up every 10 lines. All points except drop points are multiplied by the level. Combos add 50 more each time (max 1,000). Perfect Clears add 800 / 1,000 / 1,800 / 2,000 by lines cleared, or 3,200 for a Back-to-Back Tetris.</span></p>
+          <p>支援落點影子、暫存方塊、七袋隨機與簡易牆踢。三分鐘結束或方塊堆到頂端即停止。<span class="en">Includes ghost piece, hold, 7-bag randomizer and basic wall kicks. The run ends after 3 minutes or when blocks reach the top.</span></p>
+        </div>
+        <div class="notice">本頁是非正式練習工具，分數不列入比賽；計分與正式使用的《魔法氣泡 特趣思 俄羅斯方塊》可能不同。<span class="en">Unofficial practice only. Scores do not count, and scoring may differ from Puyo Puyo Tetris used in the event.</span></div>
+      </aside>
+    </div>
+  </main>
+  <script src="assets/play.js"></script>
+</body>
+</html>
