@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>尾牙競賽｜三分鐘試玩</title>
   <link rel="icon" href="assets/favicon.svg">
-  <link rel="stylesheet" href="assets/common.css?v=20261125b">
-  <link rel="stylesheet" href="assets/play.css?v=20261125b">
+  <link rel="stylesheet" href="assets/common.css?v=20261125c">
+  <link rel="stylesheet" href="assets/play.css?v=20261125c">
 </head>
 <body>
   <header>
@@ -24,7 +24,7 @@
     </nav>
   </div>
 </header>
-  <script src="assets/menu.js?v=20261125b"></script>
+  <script src="assets/menu.js?v=20261125c"></script>
   <main>
     <div class="eyebrow">TETRIS · 3 MIN PRACTICE</div>
     <h1>三分鐘俄羅斯方塊練習<span class="en">3-Minute Tetris Practice</span></h1>
@@ -33,6 +33,10 @@
     <div class="pconly" role="note">
       <span class="icon" aria-hidden="true">💻</span>
       <div><b>請用電腦開啟</b>：需要實體鍵盤操作，手機和平板無法遊玩。<span class="en">Please use a computer. A physical keyboard is required; phones and tablets can't play.</span></div>
+    </div>
+    <div class="pconly ime" role="note">
+      <span class="icon" aria-hidden="true">⌨️</span>
+      <div><b>輸入法請切成英文</b>：注音等中文輸入法開著時，按鍵可能沒反應。<span class="en">Switch your keyboard to English input. Keys may not respond with a Chinese input method on.</span></div>
     </div>
 
     <div class="layout">
@@ -80,6 +84,7 @@
 
       <aside class="sidecard">
         <h2>鍵盤操作 <small class="muted">Controls</small></h2>
+        <p class="imehint">⌨️ 按鍵沒反應？把輸入法切成<b>英文</b>。<span class="en">Keys not working? Switch to English input.</span></p>
         <div class="keys">
           <div class="keyrow"><span class="key">A</span><span>向左移動<small>Move left</small></span></div>
           <div class="keyrow"><span class="key">D</span><span>向右移動<small>Move right</small></span></div>
@@ -110,6 +115,6 @@
     // 沒有滑鼠或觸控板的裝置（手機、平板）視為不能玩：蓋住盤面、隱藏開始按鈕
     try { if (!matchMedia('(any-pointer: fine)').matches) document.body.classList.add('touch-only'); } catch (e) {}
   </script>
-  <script src="assets/play.js?v=20261125b"></script>
+  <script src="assets/play.js?v=20261125c"></script>
 </body>
 </html>
