@@ -42,3 +42,12 @@ td { padding: 17px 20px; border-top: 1px solid #edf1eb; vertical-align: top; }
   th, td { padding: 14px 10px; }
   .foot { align-items: flex-start; }
 }
+
+/* 首頁的獎品提示條，點了跳到規則頁的獎品區 */
+.prizebar { display: flex; align-items: center; gap: 12px; margin: -6px 0 22px; padding: 11px 16px; background: #fff6df; border: 1px solid #f1d28a; border-radius: 12px; color: #5f4614; font-weight: 500; }
+.prizebar:hover { background: #fff0c9; }
+.prizebar .trophy { font-size: 22px; line-height: 1; }
+.prizebar .ptext { flex: 1; line-height: 1.4; }
+.prizebar .ptext .en { color: #8a7240; }
+.prizebar .go { font-weight: 800; color: var(--green); white-space: nowrap; }
+@media (max-width: 700px) { .prizebar .more { display: none; } }
